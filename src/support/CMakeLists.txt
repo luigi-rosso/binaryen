@@ -21,7 +21,7 @@ set(support_SOURCES
 # The below condition is intended for removal once the suffix_tree and
 # suffix_tree_node source files no longer depend on LLVM code in the
 # third_party folder
-if(EMSCRIPTEN)
+if(EMSCRIPTEN OR NOT BUILD_LLVM_DWARF)
   add_library(support OBJECT ${support_SOURCES})
 else()
   set(support_with_suffix_tree_SOURCES

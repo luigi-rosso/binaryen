@@ -389,7 +389,7 @@ void test_read_with_feature() {
   BinaryenModuleSetFeatures(module, features);
 
   size_t bufferSize = 1024;
-  char* buffer = malloc(bufferSize);
+  char* buffer = (char*)malloc(bufferSize);
   size_t written = BinaryenModuleWrite(module, buffer, bufferSize);
   BinaryenModuleDispose(module);
 
@@ -1377,7 +1377,7 @@ void test_core() {
 
   // Verify no error occurs when writing out the code to binary.
   size_t bufferSize = 10 * 1024 * 1024;
-  char* buffer = malloc(bufferSize);
+  char* buffer = (char*)malloc(bufferSize);
   size_t written = BinaryenModuleWrite(module, buffer, bufferSize);
   // We wrote bytes, and we did not reach the end of the buffer (which would
   // truncate).
